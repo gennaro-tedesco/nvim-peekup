@@ -7,14 +7,10 @@ local function reg2t()
    return lines
 end
 
-local function peekup_open()
+local function floating_window()
    local buf = vim.api.nvim_create_buf(false, true)
 
-   local lines = reg2t()
-   vim.api.nvim_buf_set_lines(buf, 0, -1, true, lines)
-   vim.api.nvim_buf_set_option(buf, 'filetype', 'peek')
-
-   local opts = {
+   local win_opts = {
 	  relative = 'win',
 	  width = 100,
 	  height = 20,
@@ -24,11 +20,18 @@ local function peekup_open()
 	  focusable = true,
 	  style = 'minimal'
    }
-   local win = vim.api.nvim_open_win(buf, 0, opts)
-   vim.api.nvim_buf_set_keymap(buf, 'n', '<ESC>', ':q<CR>', { nowait = true, noremap = true, silent = true })
+   vim.api.nvim_open_win(buf, 0, win_opts)
+   return buf
+end
+
+local function peekup_open()
+   local peekup_buf = floating_window()
+   local lines = reg2t()
+   vim.api.nvim_buf_set_lines(peekup_buf, 0, -1, true, lines)
+   vim.api.nvim_buf_set_option(peekup_buf, 'filetype', 'peek')
+   vim.api.nvim_buf_set_keymap(peekup_buf, 'n', '<ESC>', ':q<CR>', { nowait = true, noremap = true, silent = true })
 end
 
 return {
-   reg2t = reg2t,
    peekup_open = peekup_open,
 }
