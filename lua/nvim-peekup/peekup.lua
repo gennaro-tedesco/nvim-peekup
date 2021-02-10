@@ -4,8 +4,9 @@ local function reg2t()
    local reg = vim.api.nvim_exec([[registers]], true)
    local lines = {}
    for s in string.gmatch(reg, "[^\n]+") do
-	  table.insert(lines, s)
+	  table.insert(lines, s:sub(1, 3)..':'..s:sub(5, #s))
    end
+   table.remove(lines,1)
    return lines
 end
 
@@ -47,7 +48,7 @@ local function floating_window(geometry)
    for _=1, win_height do
 	  table.insert(border_lines, middle_line)
    end
-   table.insert(border_lines, '╚' .. string.rep('═', win_width) .. '╝')
+   table.insert(border_lines, '╚'..string.rep('═', win_width - (#geometry.name + 2) )..' '..geometry.name..' '..'╝')
    vim.api.nvim_buf_set_lines(border_buf, 0, -1, false, border_lines)
 
    vim.api.nvim_open_win(border_buf, true, border_opts)
@@ -58,8 +59,8 @@ end
 
 local function peekup_open()
    local peekup_buf = floating_window(config.geometry)
-   local lines = center(config.geometry.title)
    local lines = reg2t()
+   table.insert(lines, 1, center(config.geometry.title))
 
    vim.api.nvim_buf_set_lines(peekup_buf, 0, -1, true, lines)
    vim.api.nvim_buf_set_option(peekup_buf, 'filetype', 'peek')
