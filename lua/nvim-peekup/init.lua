@@ -15,6 +15,9 @@ local function peekup_open()
    vim.api.nvim_buf_set_lines(peekup_buf, 0, -1, true, lines)
    vim.api.nvim_buf_set_option(peekup_buf, 'filetype', 'peek')
    vim.api.nvim_buf_set_keymap(peekup_buf, 'n', '<ESC>', ':q<CR>', { nowait = true, noremap = true, silent = true })
+   for k, v in ipairs(config.reg_chars) do
+	  vim.api.nvim_buf_set_keymap(peekup_buf, 'n', v, ':lua require"nvim-peekup.peekup".on_keystroke(\"'..v..'\")<cr>', { nowait = true, noremap = true, silent = true })
+   end
 end
 
 return {

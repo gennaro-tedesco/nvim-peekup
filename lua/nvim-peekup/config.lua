@@ -5,6 +5,11 @@ local geometry = {
    name = 'peekup',
 }
 
+local reg_chars = { }
+local chars = 'abcdefghijklmnopqrstuvwxyz0123456789*+'
+chars:gsub(".",function(c) table.insert(reg_chars,c) end)
+
 return {
    geometry = geometry,
+   reg_chars = reg_chars,
 }

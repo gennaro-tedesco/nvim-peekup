@@ -88,8 +88,18 @@ local function floating_window(geometry)
    return buf
 end
 
+local function on_keystroke(key)
+   vim.cmd('/"'..key..' :')
+   vim.cmd(':noh')
+   vim.cmd('norm V')
+   vim.cmd('redraw')
+   vim.cmd('0.3sleep')
+   vim.cmd('execute "normal! \\<Esc>"')
+end
+
 return {
    centre_string = centre_string,
    reg2t = reg2t,
-   floating_window = floating_window
+   floating_window = floating_window,
+   on_keystroke = on_keystroke,
 }
