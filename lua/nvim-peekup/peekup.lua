@@ -15,7 +15,7 @@ local function reg2t()
    table.remove(lines,1)
 
    local numerical_reg = {}
-   table.insert(numerical_reg, '-- Numerical --: press number to copy')
+   table.insert(numerical_reg, '-- Numerical -> press number to copy')
    for _, v in pairs(lines) do
 	  if string.match(v:sub(1,3), "\"%d") then
 		 table.insert(numerical_reg, v)
@@ -24,7 +24,7 @@ local function reg2t()
    table.insert(numerical_reg, '')
 
    local alpha_reg = {}
-   table.insert(alpha_reg, '-- Literal --: press letter to copy')
+   table.insert(alpha_reg, '-- Literal -> press letter to copy')
    for _, v in pairs(lines) do
 	  if string.match(v:sub(1,3), "\"[a-z]") then
 		 table.insert(alpha_reg, v)
@@ -33,7 +33,7 @@ local function reg2t()
    table.insert(alpha_reg, '')
 
    local special_reg = {}
-   table.insert(alpha_reg, '-- Special --: press character to copy')
+   table.insert(alpha_reg, '-- Special -> press character to copy')
    for _, v in pairs(lines) do
 	  if string.match(v:sub(1,3), "\"%p") then
 		 table.insert(special_reg, v)
@@ -91,14 +91,14 @@ local function floating_window(geometry)
 end
 
 local function on_keystroke(key)
-   if key == '*' then key = '\\'..key end
-   vim.cmd(':silent! /"'..key..' :')
+   local search_key = key=='*' and '\\'..key or key
+   vim.cmd(':silent! /"'..search_key..' :')
    vim.cmd(':noh')
    vim.cmd('execute "normal! f:4lvg_"')
    vim.cmd('redraw')
    vim.cmd('sleep '..config.on_keystroke.delay)
    vim.cmd('execute "normal! \\<Esc>^"')
-   vim.cmd('let @*=@'..key, false)
+   vim.cmd('let @*=@'..key)
    if config.on_keystroke.delay then
 	  vim.cmd('redraw')
 	  vim.cmd('sleep '..config.on_keystroke.delay)
