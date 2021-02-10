@@ -99,7 +99,7 @@ local function on_keystroke(key)
    vim.cmd('sleep '..config.on_keystroke.delay)
    vim.cmd('execute "normal! \\<Esc>^"')
    vim.cmd('let @*=@'..key)
-   if config.on_keystroke.delay then
+   if config.on_keystroke.autoclose then
 	  vim.cmd('redraw')
 	  vim.cmd('sleep '..config.on_keystroke.delay)
 	  vim.cmd(':q')

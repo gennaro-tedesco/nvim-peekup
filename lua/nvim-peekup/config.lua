@@ -1,6 +1,6 @@
 local geometry = {
-   width = 0.7, -- as ratio of the entire window width: 0 < x < 1
-   height = 0.7, -- as ratio of the entire window height: 0 < x < 1
+   width = 0.7,
+   height = 0.7,
    title = 'Registers',
    name = 'peekup',
 }
