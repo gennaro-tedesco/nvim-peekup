@@ -92,7 +92,7 @@ end
 
 local function on_keystroke(key)
    local search_key = key=='*' and '\\'..key or key
-   vim.cmd(':silent! /"'..search_key..' :')
+   vim.cmd(':silent! /^"'..search_key..' :')
    vim.cmd(':noh')
    vim.cmd('execute "normal! f:4lvg_"')
    vim.cmd('redraw')
