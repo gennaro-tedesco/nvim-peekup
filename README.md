@@ -19,13 +19,13 @@ Open the peekup window with the default keymapping `""`. Scroll and browse the l
 
 Default commands
 
-| key           | description
-|:------------- |:-------------
-|""             | open peekup window
-|Esc            | close peekup window
-|any charcater  | select and copy text from the corresponding " register
-|C-j, C-k       | scroll the list up and down
-|arrow keys     | move around in the peekup window
+| key             | description
+|:--------------- |:-------------
+|""               | open peekup window
+|`<Esc>`          | close peekup window
+|any character    | select and copy text from the corresponding " register
+|`<C-j>`, `<C-k>` | scroll the list up and down
+|arrow keys       | move around in the peekup window
 
 Notice that since characters keystrokes copy the text from the corresponding register, the peekup window does not obey the standard vim motion commands.
 
