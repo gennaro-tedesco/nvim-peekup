@@ -1,1 +1,1 @@
-nvim --cmd "set rtp+=$(pwd)"
+#nvim-peekup
