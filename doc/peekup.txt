@@ -1,0 +1,105 @@
+*nvim-peekup*: vim registers made easy
+
+Author  : Gennaro Tedesco <gennarotedesco@gmail.com>
+Version : 0.0.1
+License : MIT license {{{
+
+  Copyright (c)
+
+  Permission is hereby granted, free of charge, to any person obtaining
+  a copy of this software and associated documentation files (the
+  "Software"), to deal in the Software without restriction, including
+  without limitation the rights to use, copy, modify, merge, publish,
+  distribute, sublicense, and/or sell copies of the Software, and to
+  permit persons to whom the Software is furnished to do so, subject to
+  the following conditions:
+  The above copyright notice and this permission notice shall be
+  included in all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+  IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+  CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+}}}
+
+==============================================================================
+CONTENTS				*peekup-contents*
+
+    1. INTRODUCTION ................. |peekup-introduction|
+    2. INTERFACE .................... |peekup-interface|
+      2a. Key Mappings .............. |peekup-key-mappings|
+      2b. Usage ..................... |peekup-usage|
+    3. CUSTOMISATION ................ |peekup-customisation|
+
+==============================================================================
+1. INTRODUCTION				*peekup-introduction*
+
+*nvim-peekup* helps managing vim registers content by presenting them in a
+floating window that the user can interact with. Registers are listed by type
+and sorted by character.
+
+
+- selection of vim registers by single keystroke
+- visual confirmation of text selection
+- peekup fades away and the user is back to the original text
+
+==============================================================================
+2. INTERFACE				*peekup-interface*
+------------------------------------------------------------------------------
+    2a. KEY MAPPINGS				*peekup-key-mappings*
+
+    <Plug>PeekupOpen       *PeekupOpen*
+	 Interface to `:lua require('nvim-peekup').peekup_open()<CR>`
+
+>
+	"" open peekup window
+	<Esc> close peekup window
+	<any character> select and copy text from the corresponding " register
+	arrow keys to move around in the peekup window
+<
+
+	To change key mapping to open the peekup window specify use the option
+	`let g:peekup_open = ...`
+
+------------------------------------------------------------------------------
+    2b. USAGE         *peekup-usage*
+
+	Open the peekup window with `""`. Registers are listed, ordered by type
+	and character. Exit the window with `<Esc>`.
+
+	To select the content of the desired register use the corresponding character;
+	for example to select the content of the register `"a` simply press `a` while
+	in the peekup window. Once so, visual confirmation of the selected text appears.
+	The peekup window closes automatically (after a short delay) and the selected
+	text is available for copy `p` (by being passed from the original register to
+	the default register now).
+
+
+==============================================================================
+3. CUSTOMISATION        *peekup-customisation*
+
+	The look and the behaviour of the registers floating window is fully customisable.
+	In order to do so simply override the dictionary configuration entries with
+>
+	" geometry configuration
+	lua require('nvim-peekup.config').geometry["height"] = 0.8
+	lua require('nvim-peekup.config').geometry["title"] = 'An awesome window title'
+<
+	`width` and `height` are to be expressed as ratios of the entire window size, therefore 0 < x < 1.
+>
+	" behaviour of the peekup window on keystroke
+	lua require('nvim-peekup.config').on_keystroke["delay"] = '300ms'
+	lua require('nvim-peekup.config').on_keystroke["autoclose"] = false
+<
+	`delay` expresses the delay before the peekup window closes automatically,
+	after selecting the register. Obviously, `autoclose` set to false prevents
+	such behaviour (and the user must close the window manually).
+
+	To change default mapping to open the peekup window use
+	`let g:peekup_open = '<leader>"'`
+vim:ft=help:et:ts=2:sw=2:sts=2:norl
+
