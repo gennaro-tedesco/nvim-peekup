@@ -11,6 +11,8 @@ local function set_peekup_opts(buf)
    vim.api.nvim_buf_set_option(buf, 'modifiable', false)
    vim.api.nvim_buf_set_option(buf, 'readonly', true)
    vim.api.nvim_buf_set_keymap(buf, 'n', '<ESC>', ':q<CR>', { nowait = true, noremap = true, silent = true })
+   vim.api.nvim_buf_set_keymap(buf, 'n', '<C-j>', '<C-e>', { nowait = true, noremap = true, silent = true })
+   vim.api.nvim_buf_set_keymap(buf, 'n', '<C-k>', '<C-y>', { nowait = true, noremap = true, silent = true })
    for _, v in ipairs(config.reg_chars) do
 	  vim.api.nvim_buf_set_keymap(buf, 'n', v, ':lua require"nvim-peekup.peekup".on_keystroke(\"'..v..'\")<cr>', { nowait = true, noremap = true, silent = true })
    end
