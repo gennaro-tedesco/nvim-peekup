@@ -53,8 +53,8 @@ local function floating_window(geometry)
    -- create internal window
    local total_width = vim.api.nvim_get_option("columns")
    local total_height = vim.api.nvim_get_option("lines")
-   local win_width = math.ceil(total_width * geometry.width)
-   local win_height = math.ceil(total_height * geometry.height)
+   local win_width = geometry.width <=1 and math.ceil(total_width * geometry.width) or total_width
+   local win_height = geometry.height <=1 and math.ceil(total_height * geometry.height) or total_height
    local win_opts = {
 	  relative = 'win',
 	  width = win_width,
