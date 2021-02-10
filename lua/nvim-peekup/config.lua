@@ -6,7 +6,7 @@ local geometry = {
 }
 
 local reg_chars = { }
-local chars = 'abcdefghijklmnopqrstuvwxyz0123456789*+'
+local chars = 'abcdefghijklmnopqrstuvwxyz0123456789*+-%'
 chars:gsub(".",function(c) table.insert(reg_chars,c) end)
 
 return {

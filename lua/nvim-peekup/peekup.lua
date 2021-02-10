@@ -89,11 +89,12 @@ local function floating_window(geometry)
 end
 
 local function on_keystroke(key)
+   if key == '*' then key = '\\'..key end
    vim.cmd('/"'..key..' :')
    vim.cmd(':noh')
    vim.cmd('norm V')
    vim.cmd('redraw')
-   vim.cmd('0.3sleep')
+   vim.cmd('sleep 300ms')
    vim.cmd('execute "normal! \\<Esc>"')
 end
 
