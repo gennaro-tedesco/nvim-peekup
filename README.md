@@ -1,6 +1,8 @@
 # nvim-peekup
 Finally vim registers made easy and fun! No more headaches with cumbersome keystrokes `"<register>p`, no more forgetting where the yanked text is: peek into the vim registers in floating window and pick up the text you want with `nvim-peekup`!
 
+![](screenshot.png)
+
 ## Installation
 Install it using your favourite plugin manager; for instance if you are using vim-plug
 ```
