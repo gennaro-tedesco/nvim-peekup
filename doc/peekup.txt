@@ -59,7 +59,8 @@ and sorted by character.
 	"" open peekup window
 	<Esc> close peekup window
 	<any character> select and copy text from the corresponding " register
-	arrow keys to move around in the peekup window
+  <C-j>, <C-k> to scroll the list up and down
+  arrow keys to move around in the peekup window
 <
 
 	To change key mapping to open the peekup window specify use the option
