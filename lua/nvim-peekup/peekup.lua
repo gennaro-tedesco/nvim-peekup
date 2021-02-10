@@ -1,19 +1,50 @@
-local config = require("nvim-peekup.config")
-
-local function reg2t()
-   local reg = vim.api.nvim_exec([[registers]], true)
-   local lines = {}
-   for s in string.gmatch(reg, "[^\n]+") do
-	  table.insert(lines, s:sub(1, 3)..':'..s:sub(5, #s))
-   end
-   table.remove(lines,1)
-   return lines
+local function centre_string(s)
+   local width = vim.api.nvim_win_get_width(0)
+   local shift = math.floor(width / 2) - math.floor(string.len(s) / 2)
+   return string.rep(' ', shift)..s
 end
 
-local function center(str)
-   local width = vim.api.nvim_win_get_width(0)
-   local shift = math.floor(width / 2) - math.floor(string.len(str) / 2)
-   return string.rep(' ', shift) .. str
+local function reg2t()
+   -- parses the registers into a lua table
+   local lines = {}
+   for s in string.gmatch(vim.api.nvim_exec([[registers]], true), "[^\n]+") do
+	  table.insert(lines, s:sub(1, 3)..':'..s:sub(3, #s))
+   end
+   table.remove(lines,1)
+
+   local numerical_reg = {}
+   table.insert(numerical_reg, '-- Numerical --')
+   for _, v in pairs(lines) do
+	  if string.match(v:sub(1,3), "\"%d") then
+		 table.insert(numerical_reg, v)
+	  end
+   end
+   table.insert(numerical_reg, '')
+
+   local alpha_reg = {}
+   table.insert(alpha_reg, '-- Literal --')
+   for _, v in pairs(lines) do
+	  if string.match(v:sub(1,3), "\"[a-z]") then
+		 table.insert(alpha_reg, v)
+	  end
+   end
+   table.insert(alpha_reg, '')
+
+   local special_reg = {}
+   table.insert(alpha_reg, '-- Special --')
+   for _, v in pairs(lines) do
+	  if string.match(v:sub(1,3), "\"%p") then
+		 table.insert(special_reg, v)
+	  end
+   end
+   table.insert(special_reg, '')
+
+   local reg = {}
+   local n = 0
+   for _,v in ipairs(numerical_reg) do n=n+1; reg[n]=v end
+   for _,v in ipairs(alpha_reg) do n=n+1; reg[n]=v end
+   for _,v in ipairs(special_reg) do n=n+1; reg[n]=v end
+   return reg
 end
 
 local function floating_window(geometry)
@@ -57,16 +88,8 @@ local function floating_window(geometry)
    return buf
 end
 
-local function peekup_open()
-   local peekup_buf = floating_window(config.geometry)
-   local lines = reg2t()
-   table.insert(lines, 1, center(config.geometry.title))
-
-   vim.api.nvim_buf_set_lines(peekup_buf, 0, -1, true, lines)
-   vim.api.nvim_buf_set_option(peekup_buf, 'filetype', 'peek')
-   vim.api.nvim_buf_set_keymap(peekup_buf, 'n', '<ESC>', ':q<CR>', { nowait = true, noremap = true, silent = true })
-end
-
 return {
-   peekup_open = peekup_open,
+   centre_string = centre_string,
+   reg2t = reg2t,
+   floating_window = floating_window
 }
