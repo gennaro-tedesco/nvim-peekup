@@ -1,3 +1,5 @@
+local config = require("nvim-peekup.config")
+
 local function centre_string(s)
    local width = vim.api.nvim_win_get_width(0)
    local shift = math.floor(width / 2) - math.floor(string.len(s) / 2)
@@ -13,7 +15,7 @@ local function reg2t()
    table.remove(lines,1)
 
    local numerical_reg = {}
-   table.insert(numerical_reg, '-- Numerical --')
+   table.insert(numerical_reg, '-- Numerical --: press number to copy')
    for _, v in pairs(lines) do
 	  if string.match(v:sub(1,3), "\"%d") then
 		 table.insert(numerical_reg, v)
@@ -22,7 +24,7 @@ local function reg2t()
    table.insert(numerical_reg, '')
 
    local alpha_reg = {}
-   table.insert(alpha_reg, '-- Literal --')
+   table.insert(alpha_reg, '-- Literal --: press letter to copy')
    for _, v in pairs(lines) do
 	  if string.match(v:sub(1,3), "\"[a-z]") then
 		 table.insert(alpha_reg, v)
@@ -31,7 +33,7 @@ local function reg2t()
    table.insert(alpha_reg, '')
 
    local special_reg = {}
-   table.insert(alpha_reg, '-- Special --')
+   table.insert(alpha_reg, '-- Special --: press character to copy')
    for _, v in pairs(lines) do
 	  if string.match(v:sub(1,3), "\"%p") then
 		 table.insert(special_reg, v)
@@ -90,12 +92,18 @@ end
 
 local function on_keystroke(key)
    if key == '*' then key = '\\'..key end
-   vim.cmd('/"'..key..' :')
+   vim.cmd(':silent! /"'..key..' :')
    vim.cmd(':noh')
-   vim.cmd('norm V')
+   vim.cmd('execute "normal! f:4lvg_"')
    vim.cmd('redraw')
-   vim.cmd('sleep 300ms')
-   vim.cmd('execute "normal! \\<Esc>"')
+   vim.cmd('sleep '..config.on_keystroke.delay)
+   vim.cmd('execute "normal! \\<Esc>^"')
+   vim.cmd('let @*=@'..key, false)
+   if config.on_keystroke.delay then
+	  vim.cmd('redraw')
+	  vim.cmd('sleep '..config.on_keystroke.delay)
+	  vim.cmd(':q')
+   end
 end
 
 return {
