@@ -51,3 +51,6 @@ To change default mapping to open the peekup window simply specify the right han
 ```
 let g:peekup_open = '<leader>"'
 ```
+
+## Help tags
+Access the documentation with `:h nvim-peekup`.
