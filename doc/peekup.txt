@@ -56,7 +56,7 @@ and sorted by character.
 	 Interface to `:lua require('nvim-peekup').peekup_open()<CR>`
 
 >
-	"" open peekup window
+	" open peekup window
 	<Esc> close peekup window
 	<any character> select and copy text from the corresponding " register
   <C-j>, <C-k> to scroll the list up and down
@@ -69,7 +69,7 @@ and sorted by character.
 ------------------------------------------------------------------------------
     2b. USAGE         *peekup-usage*
 
-	Open the peekup window with `""`. Registers are listed, ordered by type
+	Open the peekup window with `"`. Registers are listed, ordered by type
 	and character. Exit the window with `<Esc>`.
 
 	To select the content of the desired register use the corresponding character;
