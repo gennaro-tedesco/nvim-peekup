@@ -92,7 +92,7 @@ local function on_keystroke(key)
    local search_key = key=='*' and '\\'..key or key
    vim.cmd(':silent! /^'..search_key..':')
    vim.cmd(':noh')
-   vim.cmd('execute "normal! f:'..config.on_keystroke.padding+1 ..'lvg_"')
+   vim.cmd('execute "normal! ^f:'..config.on_keystroke.padding+1 ..'lvg_"')
    vim.cmd('redraw')
    vim.cmd('sleep '..config.on_keystroke.delay)
    vim.cmd('execute "normal! \\<Esc>^"')
