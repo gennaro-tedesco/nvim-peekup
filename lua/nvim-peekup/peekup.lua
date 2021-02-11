@@ -6,37 +6,35 @@ local function centre_string(s)
    return string.rep(' ', shift)..s
 end
 
+local function get_reg(char)
+	return vim.api.nvim_exec([[echo getreg(']]..char..[[')]], true):gsub("[\n\r]", "^J")
+end
+
 local function reg2t()
    -- parses the registers into a lua table
-   local lines = {}
-   for s in string.gmatch(vim.api.nvim_exec([[registers]], true), "[^\n]+") do
-	  table.insert(lines, s:sub(1, 3)..':'..s:sub(3, #s))
-   end
-   table.remove(lines,1)
-
    local numerical_reg = {}
    table.insert(numerical_reg, '-- Numerical -> press number to copy')
-   for _, v in pairs(lines) do
-	  if string.match(v:sub(1,3), "\"%d") then
-		 table.insert(numerical_reg, v)
+   for _, v in pairs(config.reg_chars) do
+	  if string.match(v, "%d") and get_reg(v) ~='' then
+		 table.insert(numerical_reg, v..':'..string.rep(' ', config.on_keystroke.padding)..get_reg(v))
 	  end
    end
    table.insert(numerical_reg, '')
 
    local alpha_reg = {}
    table.insert(alpha_reg, '-- Literal -> press letter to copy')
-   for _, v in pairs(lines) do
-	  if string.match(v:sub(1,3), "\"[a-z]") then
-		 table.insert(alpha_reg, v)
+   for _, v in pairs(config.reg_chars) do
+	  if string.match(v, "%a") and get_reg(v) ~='' then
+		 table.insert(alpha_reg, v..':'..string.rep(' ', config.on_keystroke.padding)..get_reg(v))
 	  end
    end
    table.insert(alpha_reg, '')
 
    local special_reg = {}
    table.insert(alpha_reg, '-- Special -> press character to copy')
-   for _, v in pairs(lines) do
-	  if string.match(v:sub(1,3), "\"%p") then
-		 table.insert(special_reg, v)
+   for _, v in pairs(config.reg_chars) do
+	  if string.match(v, "%p") and get_reg(v) ~='' then
+		 table.insert(special_reg, v..':'..string.rep(' ', config.on_keystroke.padding)..get_reg(v))
 	  end
    end
    table.insert(special_reg, '')
@@ -92,9 +90,9 @@ end
 
 local function on_keystroke(key)
    local search_key = key=='*' and '\\'..key or key
-   vim.cmd(':silent! /^"'..search_key..' :')
+   vim.cmd(':silent! /^'..search_key..':')
    vim.cmd(':noh')
-   vim.cmd('execute "normal! f:4lvg_"')
+   vim.cmd('execute "normal! f:'..config.on_keystroke.padding+1 ..'lvg_"')
    vim.cmd('redraw')
    vim.cmd('sleep '..config.on_keystroke.delay)
    vim.cmd('execute "normal! \\<Esc>^"')
