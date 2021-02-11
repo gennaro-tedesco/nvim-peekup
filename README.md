@@ -11,7 +11,7 @@ Plug 'gennaro-tedesco/nvim-peekup'
 We recommend to use the latest neovim [nightly build](https://github.com/neovim/neovim/releases/tag/nightly), as some lua options may not work otherwise.
 
 ## Usage
-Open the peekup window with the default keymapping `"`. Scroll and browse the list of registers ordered by type. Select the register you want to copy by simplying pressing the corresponding keystroke character (letter or number, no need to prepend `"`): you receive visual confirmation for your choice and the text is copied into the default register. The peekup window automatically closes and you can now easily put (`p`) your yanked text anywhere you want.
+Open the peekup window with the default keymapping `""`. Scroll and browse the list of registers ordered by type. Select the register you want to copy by simplying pressing the corresponding keystroke character (letter or number, no need to prepend `"`): you receive visual confirmation for your choice and the text is copied into the default register. The peekup window automatically closes and you can now easily put (`p`) your yanked text anywhere you want.
 
 `<Esc>` to manually close the window otherwise.
 
