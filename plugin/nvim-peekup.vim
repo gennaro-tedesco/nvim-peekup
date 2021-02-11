@@ -8,7 +8,7 @@ if exists('g:peekup_open')
 	echo g:peekup_open
 	execute 'nmap ' . g:peekup_open . ' <Plug>PeekupOpen'
 else
-	nmap " <Plug>PeekupOpen
+	nmap "" <Plug>PeekupOpen
 endif
 
 let g:loaded_peekup = 1
