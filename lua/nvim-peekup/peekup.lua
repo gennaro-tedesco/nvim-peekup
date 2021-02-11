@@ -89,18 +89,23 @@ local function floating_window(geometry)
 end
 
 local function on_keystroke(key)
+   -- defines the action to be undertaken upon keystroke in the peekup window
    local search_key = key=='*' and '\\'..key or key
-   vim.cmd(':silent! /^'..search_key..':')
-   vim.cmd(':noh')
-   vim.cmd('execute "normal! ^f:'..config.on_keystroke.padding+1 ..'lvg_"')
-   vim.cmd('redraw')
-   vim.cmd('sleep '..config.on_keystroke.delay)
-   vim.cmd('execute "normal! \\<Esc>^"')
-   vim.cmd('let @*=@'..key)
-   if config.on_keystroke.autoclose then
+   if vim.api.nvim_exec('echo search("^'..search_key.. ':") > 0', true) ~= '0' then
+	  vim.cmd(':silent! /^'..search_key..':')
+	  vim.cmd(':noh')
+	  vim.cmd('execute "normal! ^f:'..config.on_keystroke.padding+1 ..'lvg_"')
 	  vim.cmd('redraw')
 	  vim.cmd('sleep '..config.on_keystroke.delay)
-	  vim.cmd(':q')
+	  vim.cmd('execute "normal! \\<Esc>^"')
+	  vim.cmd('let @*=@'..key)
+	  if config.on_keystroke.autoclose then
+		 vim.cmd('redraw')
+		 vim.cmd('sleep '..config.on_keystroke.delay)
+		 vim.cmd(':q')
+	  end
+   else
+	  vim.cmd('echo "register '..key..' not available"')
    end
 end
 
