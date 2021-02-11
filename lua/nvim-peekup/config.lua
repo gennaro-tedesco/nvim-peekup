@@ -8,6 +8,7 @@ local geometry = {
 local on_keystroke = {
    delay = '700ms',
    autoclose = true,
+   padding = 3
 }
 
 local reg_chars = {}
