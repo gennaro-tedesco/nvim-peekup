@@ -21,7 +21,7 @@ Default commands
 
 | key             | description
 |:--------------- |:-------------
-|"                | open peekup window
+|""               | open peekup window
 |`<Esc>`          | close peekup window
 |any character    | select and copy text from the corresponding " register
 |`<C-j>`, `<C-k>` | scroll the list up and down
