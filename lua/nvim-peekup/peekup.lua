@@ -1,8 +1,7 @@
 local config = require("nvim-peekup.config")
 
 local function centre_string(s)
-   local width = vim.api.nvim_win_get_width(0)
-   local shift = math.floor(width / 2) - math.floor(string.len(s) / 2)
+   local shift = math.floor((vim.api.nvim_win_get_width(0) -#s) / 2)
    return string.rep(' ', shift)..s
 end
 
