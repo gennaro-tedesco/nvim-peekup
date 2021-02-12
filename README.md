@@ -25,9 +25,9 @@ Default commands
 |`<Esc>`          | close peekup window
 |any character    | select and copy text from the corresponding " register
 |`<C-j>`, `<C-k>` | scroll the list up and down
-|arrow keys       | move around in the peekup window
+|`<Up>`, `<Down>` | move to next registers type
 
-Notice that since characters keystrokes copy the text from the corresponding register, the peekup window does not obey the standard vim motion commands.
+Notice that since characters keystrokes copy the text from the corresponding register, the peekup window does not obey the standard vim motion commands. Arrow keys move among registers sections (they can also use the corresponding marks `'n, 'l, 's`).
 
 ## Features in short
 - peekup floating window with registers content
@@ -41,6 +41,7 @@ The look and the behaviour of the registers floating window is fully customisabl
 " geometry configuration
 lua require('nvim-peekup.config').geometry["height"] = 0.8
 lua require('nvim-peekup.config').geometry["title"] = 'An awesome window title'
+lua require('nvim-peekup.config').geometry["wrap"] = false
 ```
 `width` and `height` are to be expressed as ratios of the entire window size, therefore 0 < x < 1.
 ```
