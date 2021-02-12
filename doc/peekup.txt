@@ -60,8 +60,12 @@ and sorted by character.
 	<Esc> close peekup window
 	<any character> select and copy text from the corresponding " register
   <C-j>, <C-k> to scroll the list up and down
-  arrow keys to move around in the peekup window
+  <Up>, <Down> jump to next register section
 <
+  The register sections Numerical, Literal and Special have marks set
+  accordingly as `'n, 'l, 's`, so you may jump using those too. Notice that since
+  characters keystrokes copy the text from the corresponding register, the peekup
+  window does not obey the standard vim motion commands.
 
 	To change key mapping to open the peekup window specify use the option
 	`let g:peekup_open = ...`
@@ -70,7 +74,8 @@ and sorted by character.
     2b. USAGE         *peekup-usage*
 
 	Open the peekup window with `""`. Registers are listed, ordered by type
-	and character. Exit the window with `<Esc>`.
+	and character. Jump to the next registers section with `<Up>, <Down>'`.
+  Exit the window with `<Esc>`.
 
 	To select the content of the desired register use the corresponding character;
 	for example to select the content of the register `"a` simply press `a` while
@@ -95,6 +100,7 @@ and sorted by character.
 	" behaviour of the peekup window on keystroke
 	lua require('nvim-peekup.config').on_keystroke["delay"] = '300ms'
 	lua require('nvim-peekup.config').on_keystroke["autoclose"] = false
+  lua require('nvim-peekup.config').geometry["wrap"] = false
 <
 	`delay` expresses the delay before the peekup window closes automatically,
 	after selecting the register. Obviously, `autoclose` set to false prevents

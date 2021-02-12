@@ -1,8 +1,7 @@
 local config = require("nvim-peekup.config")
 
 local function centre_string(s)
-   local width = vim.api.nvim_win_get_width(0)
-   local shift = math.floor(width / 2) - math.floor(string.len(s) / 2)
+   local shift = math.floor((vim.api.nvim_win_get_width(0) -#s) / 2)
    return string.rep(' ', shift)..s
 end
 
@@ -83,7 +82,8 @@ local function floating_window(geometry)
    vim.api.nvim_buf_set_lines(border_buf, 0, -1, false, border_lines)
 
    vim.api.nvim_open_win(border_buf, true, border_opts)
-   vim.api.nvim_open_win(buf, 0, win_opts)
+   vim.api.nvim_open_win(buf, 1, win_opts)
+   vim.api.nvim_win_set_option(0, 'wrap', config.geometry.wrap)
    vim.cmd('au BufWipeout <buffer> exe "silent bwipeout! "'..border_buf)
    return buf
 end
