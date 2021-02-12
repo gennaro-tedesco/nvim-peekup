@@ -3,6 +3,7 @@ local geometry = {
    height = 0.7,
    title = 'Registers',
    name = 'peekup',
+   wrap = true,
 }
 
 local on_keystroke = {
