@@ -13,20 +13,8 @@ local function set_peekup_opts(buf)
    vim.api.nvim_buf_set_keymap(buf, 'n', '<ESC>', ':q<CR>', { nowait = true, noremap = true, silent = true })
    vim.api.nvim_buf_set_keymap(buf, 'n', '<C-j>', '<C-e>', { nowait = true, noremap = true, silent = true })
    vim.api.nvim_buf_set_keymap(buf, 'n', '<C-k>', '<C-y>', { nowait = true, noremap = true, silent = true })
-   for _, v in ipairs(config.reg_chars) do
-	  vim.api.nvim_buf_set_keymap(buf, 'n', v, ':lua require"nvim-peekup.peekup".on_keystroke(\"'..v..'\")<cr>', { nowait = true, noremap = true, silent = true })
-   end
-   vim.api.nvim_buf_set_keymap(buf, 'n', '<Down>', ']`', { nowait = true, noremap = true, silent = true })
-   vim.api.nvim_buf_set_keymap(buf, 'n', '<Up>', '[`', { nowait = true, noremap = true, silent = true })
-end
 
-local function peekup_open()
-   local peekup_buf = peekup.floating_window(config.geometry)
-   local lines = peekup.reg2t()
-   table.insert(lines, 1, peekup.centre_string(config.geometry.title))
-   table.insert(lines, 2, '')
-
-   vim.api.nvim_buf_set_lines(peekup_buf, 0, -1, true, lines)
+   -- setting markers
    vim.api.nvim_exec(
    [[
    function! SetMarks() abort
@@ -43,6 +31,22 @@ local function peekup_open()
    ]],
    false
    )
+
+   -- setting peekup keymaps
+   for _, v in ipairs(config.reg_chars) do
+	  vim.api.nvim_buf_set_keymap(buf, 'n', v, ':lua require"nvim-peekup.peekup".on_keystroke(\"'..v..'\")<cr>', { nowait = true, noremap = true, silent = true })
+   end
+   vim.api.nvim_buf_set_keymap(buf, 'n', '<Down>', ']`', { nowait = true, noremap = true, silent = true })
+   vim.api.nvim_buf_set_keymap(buf, 'n', '<Up>', '[`', { nowait = true, noremap = true, silent = true })
+end
+
+local function peekup_open()
+   local peekup_buf = peekup.floating_window(config.geometry)
+   local lines = peekup.reg2t()
+   table.insert(lines, 1, peekup.centre_string(config.geometry.title))
+   table.insert(lines, 2, '')
+
+   vim.api.nvim_buf_set_lines(peekup_buf, 0, -1, true, lines)
    set_peekup_opts(peekup_buf)
 end
 
