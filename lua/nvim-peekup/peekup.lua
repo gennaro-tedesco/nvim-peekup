@@ -12,7 +12,7 @@ end
 local function reg2t()
    -- parses the registers into a lua table
    local numerical_reg = {}
-   table.insert(numerical_reg, '-- Numerical -> press number to copy')
+   table.insert(numerical_reg, 'Numerical -> press number to copy')
    for _, v in pairs(config.reg_chars) do
 	  if string.match(v, "%d") and get_reg(v) ~='' then
 		 table.insert(numerical_reg, v..':'..string.rep(' ', config.on_keystroke.padding)..get_reg(v))
@@ -21,7 +21,7 @@ local function reg2t()
    table.insert(numerical_reg, '')
 
    local alpha_reg = {}
-   table.insert(alpha_reg, '-- Literal -> press letter to copy')
+   table.insert(alpha_reg, 'Literal -> press letter to copy')
    for _, v in pairs(config.reg_chars) do
 	  if string.match(v, "%a") and get_reg(v) ~='' then
 		 table.insert(alpha_reg, v..':'..string.rep(' ', config.on_keystroke.padding)..get_reg(v))
@@ -30,7 +30,7 @@ local function reg2t()
    table.insert(alpha_reg, '')
 
    local special_reg = {}
-   table.insert(alpha_reg, '-- Special -> press character to copy')
+   table.insert(alpha_reg, 'Special -> press character to copy')
    for _, v in pairs(config.reg_chars) do
 	  if string.match(v, "%p") and get_reg(v) ~='' then
 		 table.insert(special_reg, v..':'..string.rep(' ', config.on_keystroke.padding)..get_reg(v))
