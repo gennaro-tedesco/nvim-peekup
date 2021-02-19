@@ -11,11 +11,7 @@ unlet s:section
 syntax match NumReg /^[0-9]:/
 syntax match LitReg /^[A-Za-z]:/
 
-let s:window_title=luaeval('require("nvim-peekup.config").geometry["title"]')
-execute 'syntax match WindowTitle /' . s:window_title .'/'
-
 highlight default link NumReg Tag
 highlight default link LitReg Tag
-highlight default link WindowTitle Label
 
 let b:current_syntax = "peekup"
