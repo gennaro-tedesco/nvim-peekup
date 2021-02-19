@@ -18,11 +18,11 @@ local function set_peekup_opts(buf)
    vim.api.nvim_exec(
    [[
    function! SetMarks() abort
-	  execute 'keeppatterns /^-- Numerical'
+	  execute 'keeppatterns /^Numerical'
 	  execute 'mark n'
-	  execute 'keeppatterns /^-- Literal'
+	  execute 'keeppatterns /^Literal'
 	  execute 'mark l'
-	  execute 'keeppatterns /^-- Special'
+	  execute 'keeppatterns /^Special'
 	  execute 'mark s'
 	  execute 'normal! gg0'
    endfunction
