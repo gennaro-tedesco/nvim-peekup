@@ -58,3 +58,6 @@ let g:peekup_open = '<leader>"'
 
 ## Help tags
 Access the documentation with `:h nvim-peekup`.
+
+## Feedback
+If you find this plugin useful, consider awarding it a :star:. Otherwise, any additional feedback or merge request is greatly welcome!
