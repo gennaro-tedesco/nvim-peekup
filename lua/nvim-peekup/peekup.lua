@@ -98,7 +98,7 @@ local function on_keystroke(key)
 	  vim.cmd('redraw')
 	  vim.cmd('sleep '..config.on_keystroke.delay)
 	  vim.cmd('execute "normal! \\<Esc>^"')
-	  vim.cmd('let @'..config.paste_reg..'=@'..key)
+	  vim.cmd('let @'..config.on_keystroke.paste_reg..'=@'..key)
 	  if config.on_keystroke.autoclose then
 		 vim.cmd('redraw')
 		 vim.cmd('sleep '..config.on_keystroke.delay)
