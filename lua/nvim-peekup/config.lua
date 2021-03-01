@@ -1,3 +1,7 @@
+local reg_chars = {}
+local chars = 'abcdefghijklmnopqrstuvwxyz0123456789*+-%'
+chars:gsub(".",function(c) table.insert(reg_chars,c) end)
+
 local geometry = {
    width = 0.7,
    height = 0.7,
@@ -6,18 +10,21 @@ local geometry = {
    wrap = true,
 }
 
+local function validate_reg(s)
+   for _,v in ipairs(reg_chars) do if v == s then return s end end return '*'
+end
+
+local paste_reg = '*'
 local on_keystroke = {
    delay = '700ms',
    autoclose = true,
-   padding = 3
+   padding = 3,
+   paste_reg = validate_reg(paste_reg)
 }
 
-local reg_chars = {}
-local chars = 'abcdefghijklmnopqrstuvwxyz0123456789*+-%'
-chars:gsub(".",function(c) table.insert(reg_chars,c) end)
-
 return {
+   reg_chars = reg_chars,
    geometry = geometry,
    on_keystroke = on_keystroke,
-   reg_chars = reg_chars,
+   validate_reg = validate_reg,
 }
