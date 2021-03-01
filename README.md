@@ -56,6 +56,13 @@ To change default mapping to open the peekup window simply specify the right han
 let g:peekup_open = '<leader>"'
 ```
 
+To change the default register the selected paste goes into (default: `*`):
+
+```
+" put selection into " register instead:
+lua require('nvim-peekup.config').paste_reg = '"'
+```
+
 ## Help tags
 Access the documentation with `:h nvim-peekup`.
 
