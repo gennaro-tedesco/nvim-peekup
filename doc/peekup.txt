@@ -111,6 +111,6 @@ and sorted by character.
 
 	To change the default register the selected paste goes into (default: `*`):
 	" put selection into " register instead:
-	lua require('nvim-peekup.config').paste_reg = '"'
+	`lua require('nvim-peekup.config').on_keystroke["paste_reg"] = '"'`
 vim:ft=help:et:ts=2:sw=2:sts=2:norl
 
