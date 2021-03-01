@@ -48,8 +48,9 @@ lua require('nvim-peekup.config').geometry["wrap"] = false
 " behaviour of the peekup window on keystroke
 lua require('nvim-peekup.config').on_keystroke["delay"] = '300ms'
 lua require('nvim-peekup.config').on_keystroke["autoclose"] = false
+lua require('nvim-peekup.config').on_keystroke["paste_reg"] = '"'
 ```
-`delay` expresses the delay before the peekup window closes automatically, after selecting the register. Obviously, `autoclose` set to false prevents such behaviour (and the user must close the window manually).
+`delay` expresses the delay before the peekup window closes automatically, after selecting the register. Obviously, `autoclose` set to false prevents such behaviour (and the user must close the window manually). The selected paste goes into the default register `*`: change accordingly if needed.
 
 To change default mapping to open the peekup window simply specify the right hand side of
 ```
@@ -58,6 +59,12 @@ let g:peekup_open = '<leader>"'
 
 ## Help tags
 Access the documentation with `:h nvim-peekup`.
+
+## Unit tests
+We make use of the [busted framework](https://olivinelabs.com/busted/) for unit tests; run them with
+```
+busted -C lua
+```
 
 ## Feedback
 If you find this plugin useful, consider awarding it a ⭐, it is a great way to give feedback! Otherwise, any additional suggestions or merge request is warmly welcome!
