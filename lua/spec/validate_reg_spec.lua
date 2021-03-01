@@ -7,7 +7,7 @@ describe("validate custom register string", function()
 	  invalid_reg = '!'
    end)
 
-   it("is_comment_block_surround #surround", function()
+   it("validate register #validate_reg", function()
 	  assert.are_same(config.validate_reg(valid_reg), valid_reg)
 	  assert.are_same(config.validate_reg(invalid_reg), '*')
    end)
