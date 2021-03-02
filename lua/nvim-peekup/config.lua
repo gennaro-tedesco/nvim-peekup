@@ -1,5 +1,8 @@
 local reg_chars = {}
-local chars = 'abcdefghijklmnopqrstuvwxyz0123456789*+-%'
+local chars = 'abcdefghijklmnopqrstuvwxyz0123456789-%'
+if vim.fn.has("clipboard") == 1 then
+   chars = 'abcdefghijklmnopqrstuvwxyz0123456789*+-%'
+end
 chars:gsub(".",function(c) table.insert(reg_chars,c) end)
 
 local geometry = {
