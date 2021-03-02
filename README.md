@@ -50,7 +50,13 @@ lua require('nvim-peekup.config').on_keystroke["delay"] = '300ms'
 lua require('nvim-peekup.config').on_keystroke["autoclose"] = false
 lua require('nvim-peekup.config').on_keystroke["paste_reg"] = '"'
 ```
-`delay` expresses the delay before the peekup window closes automatically, after selecting the register. Obviously, `autoclose` set to false prevents such behaviour (and the user must close the window manually). The selected paste goes into the default register `*`: change accordingly if needed.
+`delay` expresses the delay before the peekup window closes automatically, after selecting the register. Obviously, `autoclose` set to false prevents such behaviour (and the user must close the window manually).
+`delay` can be set to the empty string to not delay at all, i.e.:
+```
+lua require('nvim-peekup.config').on_keystroke["delay"] = ''
+```
+
+The selected paste goes into the default register `*`: change accordingly if needed.
 
 To change default mapping to open the peekup window simply specify the right hand side of
 ```

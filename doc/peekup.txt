@@ -105,7 +105,10 @@ and sorted by character.
 	`delay` expresses the delay before the peekup window closes automatically,
 	after selecting the register. Obviously, `autoclose` set to false prevents
 	such behaviour (and the user must close the window manually).
-
+	`delay` can be set to the empty string to not delay at all, i.e.:
+>
+	lua require('nvim-peekup.config').on_keystroke["delay"] = ''
+<
 	To change default mapping to open the peekup window use
 	`let g:peekup_open = '<leader>"'`
 
