@@ -70,16 +70,20 @@ and sorted by character.
 	To change key mapping to open the peekup window specify use the option
 	`let g:peekup_open = ...`
 
-  To automatically paste before or after having selected a register, you can
-  pass an argument to peekup_open containing the paste command (`p` or `P`) to
-  use, i.e.:
+    <Plug>PeekupPasteBefore       *PeekupPasteBefore*
+  Interace to `:lua require('nvim-peekup').peekup_open('P')`
 
-  `:lua require('nvim-peekup').peekup_open("P")<CR>`
+    <Plug>PeekupPasteAfter       *PeekupPasteAfter*
+  Interace to `:lua require('nvim-peekup').peekup_open('p')`
 
-  or:
+  The `peekup_open()` function also accepts an additional argument that allows
+  to skip manually pasting altogether and directly puts before or after the
+  current cursor position. If you like such behaviour use the options
+  that are mapped to such interfaces:
 
-  `:nnoremap <Leader>P :lua require('nvim-peekup').peekup_open("P")<CR>`
-  `:nnoremap <Leader>p :lua require('nvim-peekup').peekup_open("p")<CR>`
+  `let g:peekup_paste_before = '<leader>P'`
+  `let g:peekup_paste_after = '<leader>p'`
+
 
 ------------------------------------------------------------------------------
     2b. USAGE         *peekup-usage*
@@ -95,6 +99,13 @@ and sorted by character.
 	text is available for copy `p` (by being passed from the original register to
 	the default register now).
 
+  If you have mapped
+
+  `let g:peekup_paste_before = '<leader>P'`
+  `let g:peekup_paste_after = '<leader>p'`
+
+  the text is automatically put before or after the current cursor position
+  with no need to have to issue `p` in the initial buffer.
 
 ==============================================================================
 3. CUSTOMISATION        *peekup-customisation*

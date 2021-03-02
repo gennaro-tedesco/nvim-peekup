@@ -29,6 +29,26 @@ Default commands
 
 Notice that since characters keystrokes copy the text from the corresponding register, the peekup window does not obey the standard vim motion commands. Arrow keys move among registers sections (they can also use the corresponding marks `'n, 'l, 's`).
 
+To change default mapping to open the peekup window simply specify the right hand side of
+```
+let g:peekup_open = '<leader>"'
+```
+If you want to directly paste before or after the current cursor position (without having to issue `p` after the selection) simply specify values for the options
+```
+let g:peekup_paste_before = '<leader>P'
+let g:peekup_paste_after = '<leader>p'
+```
+
+Exposed interfaces
+
+| option                   | method                       | description
+|:------------------------ |:---------------------------- |:----------------
+|g:peekup\_open            | `<Plug>PeekupOpen`           | open peekup window and interact
+|g:peekup\_paste\_before   | `<Plug>PeekupPasteBefore`    | directly paste before cursor upon selection
+|g:peekup\_paste\_after    | `<Plug>PeekupPasteAfter`     | directly paste after cursor upon selection
+
+see also `:help peekup-usage`.
+
 ## Features in short
 - peekup floating window with registers content
 - visual confirmation of selected text
@@ -58,10 +78,6 @@ lua require('nvim-peekup.config').on_keystroke["delay"] = ''
 
 The selected paste goes into the default register `*`: change accordingly if needed.
 
-To change default mapping to open the peekup window simply specify the right hand side of
-```
-let g:peekup_open = '<leader>"'
-```
 
 ## Help tags
 Access the documentation with `:h nvim-peekup`.
