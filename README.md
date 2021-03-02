@@ -61,10 +61,19 @@ let g:peekup_open = '<leader>"'
 Access the documentation with `:h nvim-peekup`.
 
 ## Unit tests
-We make use of the [busted framework](https://olivinelabs.com/busted/) for unit tests; run them with
+We make use of the busted framework for unit tests; run them with
 ```
 busted -C lua
 ```
 
 ## Feedback
-If you find this plugin useful, consider awarding it a ⭐, it is a great way to give feedback! Otherwise, any additional suggestions or merge request is warmly welcome!
+If you find this plugin useful consider awarding it a ⭐, it is a great way to give feedback! Otherwise, any additional suggestions or merge request is warmly welcome!
+
+This plugin was inspired by [vim-peekaboo](https://github.com/junegunn/vim-peekaboo), which in addition allows to also paste in insert mode. However, `nvim-peekup` offers a fresh interactive and visual experience with registers and, not that it matters, is in average  more than 4 times faster at start-up:
+```
+nvim --startuptime start.log -c quit && grep "peekup|peekaboo" start.log
+elapsed
+000.051  000.051: sourcing ~/.config/nvim/plugged/nvim-peekup/plugin/nvim-peekup.vim
+000.202  000.212: sourcing ~/.config/nvim/plugged/vim-peekaboo/plugin/peekaboo.vim
+000.195  000.195: sourcing ~/.config/nvim/plugged/vim-peekaboo/autoload/peekaboo.vim
+```
