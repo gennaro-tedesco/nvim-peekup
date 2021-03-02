@@ -70,6 +70,21 @@ and sorted by character.
 	To change key mapping to open the peekup window specify use the option
 	`let g:peekup_open = ...`
 
+    <Plug>PeekupPasteBefore       *PeekupPasteBefore*
+  Interface to `:lua require('nvim-peekup').peekup_open('P')`
+
+    <Plug>PeekupPasteAfter       *PeekupPasteAfter*
+  Interface to `:lua require('nvim-peekup').peekup_open('p')`
+
+  The `peekup_open()` function also accepts an additional argument that allows
+  to skip manually pasting altogether and directly puts before or after the
+  current cursor position. If you like such behaviour use the options
+  that are mapped to such interfaces:
+
+  `let g:peekup_paste_before = '<leader>P'`
+  `let g:peekup_paste_after = '<leader>p'`
+
+
 ------------------------------------------------------------------------------
     2b. USAGE         *peekup-usage*
 
@@ -84,6 +99,13 @@ and sorted by character.
 	text is available for copy `p` (by being passed from the original register to
 	the default register now).
 
+  If you have mapped
+
+  `let g:peekup_paste_before = '<leader>P'`
+  `let g:peekup_paste_after = '<leader>p'`
+
+  the text is automatically put before or after the current cursor position
+  with no need to have to issue `p` in the initial buffer.
 
 ==============================================================================
 3. CUSTOMISATION        *peekup-customisation*
