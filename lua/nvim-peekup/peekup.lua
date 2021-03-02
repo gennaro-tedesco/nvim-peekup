@@ -9,10 +9,16 @@ local function get_reg(char)
 	return vim.fn.getreg(char):gsub("[\n\r]", "^J")
 end
 
-local function reg2t()
+local function reg2t(paste_where)
    -- parses the registers into a lua table
    local numerical_reg = {}
-   table.insert(numerical_reg, 'Numerical -> press number to copy')
+   local action = 'to copy'
+   if paste_where == 'p' then
+       action = 'to paste after the cursor'
+   elseif paste_where == 'P' then
+       action = 'to paste before the cursor'
+   end
+   table.insert(numerical_reg, 'Numerical -> press number '..action)
    for _, v in pairs(config.reg_chars) do
 	  if string.match(v, "%d") and get_reg(v) ~='' then
 		 table.insert(numerical_reg, v..':'..string.rep(' ', config.on_keystroke.padding)..get_reg(v))
@@ -21,7 +27,7 @@ local function reg2t()
    table.insert(numerical_reg, '')
 
    local alpha_reg = {}
-   table.insert(alpha_reg, 'Literal -> press letter to copy')
+   table.insert(alpha_reg, 'Literal -> press letter '..action)
    for _, v in pairs(config.reg_chars) do
 	  if string.match(v, "%a") and get_reg(v) ~='' then
 		 table.insert(alpha_reg, v..':'..string.rep(' ', config.on_keystroke.padding)..get_reg(v))
@@ -30,7 +36,7 @@ local function reg2t()
    table.insert(alpha_reg, '')
 
    local special_reg = {}
-   table.insert(alpha_reg, 'Special -> press character to copy')
+   table.insert(alpha_reg, 'Special -> press character '..action)
    for _, v in pairs(config.reg_chars) do
 	  if string.match(v, "%p") and get_reg(v) ~='' then
 		 table.insert(special_reg, v..':'..string.rep(' ', config.on_keystroke.padding)..get_reg(v))
