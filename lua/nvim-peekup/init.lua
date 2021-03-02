@@ -42,7 +42,7 @@ end
 
 local function peekup_open(paste_where)
    local peekup_buf = peekup.floating_window(config.geometry)
-   local lines = peekup.reg2t()
+   local lines = peekup.reg2t(paste_where)
    table.insert(lines, 1, peekup.centre_string(config.geometry.title))
    table.insert(lines, 2, '')
 
