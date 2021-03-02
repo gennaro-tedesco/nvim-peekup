@@ -88,7 +88,7 @@ local function floating_window(geometry)
    return buf
 end
 
-local function on_keystroke(key)
+local function on_keystroke(key, paste_where)
    -- defines the action to be undertaken upon keystroke in the peekup window
    local search_key = key=='*' and '\\'..key or key
    if vim.api.nvim_exec('echo search("^'..search_key.. ':") > 0', true) ~= '0' then
@@ -108,6 +108,9 @@ local function on_keystroke(key)
 		 end
 		 vim.cmd(':q')
 	  end
+      if paste_where then
+         vim.cmd('execute "normal! \\"'..key..paste_where..'"')
+      end
    else
 	  vim.cmd('echo "register '..key..' not available"')
    end

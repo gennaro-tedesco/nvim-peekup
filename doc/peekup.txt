@@ -70,6 +70,17 @@ and sorted by character.
 	To change key mapping to open the peekup window specify use the option
 	`let g:peekup_open = ...`
 
+  To automatically paste before or after having selected a register, you can
+  pass an argument to peekup_open containing the paste command (`p` or `P`) to
+  use, i.e.:
+
+  `:lua require('nvim-peekup').peekup_open("P")<CR>`
+
+  or:
+
+  `:nnoremap <Leader>P :lua require('nvim-peekup').peekup_open("P")<CR>`
+  `:nnoremap <Leader>p :lua require('nvim-peekup').peekup_open("p")<CR>`
+
 ------------------------------------------------------------------------------
     2b. USAGE         *peekup-usage*
 
