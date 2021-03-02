@@ -71,10 +71,10 @@ and sorted by character.
 	`let g:peekup_open = ...`
 
     <Plug>PeekupPasteBefore       *PeekupPasteBefore*
-  Interace to `:lua require('nvim-peekup').peekup_open('P')`
+  Interface to `:lua require('nvim-peekup').peekup_open('P')`
 
     <Plug>PeekupPasteAfter       *PeekupPasteAfter*
-  Interace to `:lua require('nvim-peekup').peekup_open('p')`
+  Interface to `:lua require('nvim-peekup').peekup_open('p')`
 
   The `peekup_open()` function also accepts an additional argument that allows
   to skip manually pasting altogether and directly puts before or after the
