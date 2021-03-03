@@ -11,8 +11,8 @@ endfor
 unlet s:section
 
 execute 'syntax match RegTitle /^\s*' . luaeval("require('nvim-peekup.config').geometry[\"title\"]") . '/'
-syntax match RegName /^[0-9A-Za-z*+%-]/ contained
-syntax match RegNamePrefix /^[0-9A-Za-z*+%-]:/ contains=RegName
+syntax match RegName /^[\/0-9A-Za-z*+.%-]/ contained
+syntax match RegNamePrefix /^[\/0-9A-Za-z*+.%-]:/ contains=RegName
 
 highlight default link RegTitle Title
 highlight default link RegNamePrefix Label
