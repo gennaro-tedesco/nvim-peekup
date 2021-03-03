@@ -41,8 +41,8 @@ local function set_peekup_opts(buf, paste_where)
 end
 
 local function peekup_open(paste_where)
-   local peekup_buf = peekup.floating_window(config.geometry)
    local lines = peekup.reg2t(paste_where)
+   local peekup_buf = peekup.floating_window(config.geometry)
    table.insert(lines, 1, peekup.centre_string(config.geometry.title))
    table.insert(lines, 2, '')
 
