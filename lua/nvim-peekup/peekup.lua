@@ -88,6 +88,7 @@ local function floating_window(geometry)
    vim.api.nvim_buf_set_lines(border_buf, 0, -1, false, border_lines)
 
    vim.api.nvim_open_win(border_buf, true, border_opts)
+   vim.api.nvim_win_set_option(0, 'winhl', 'Normal:Normal')
    vim.api.nvim_open_win(buf, 1, win_opts)
    vim.api.nvim_win_set_option(0, 'wrap', config.geometry.wrap)
    vim.cmd('au BufWipeout <buffer> exe "silent bwipeout! "'..border_buf)
