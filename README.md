@@ -1,8 +1,9 @@
 <p align="center">
-  <img width="460" height="300" src="img/logo.png">
-  [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-  ![Contributions welcome](https://img.shields.io/badge/contributions-welcome-orange.svg)
+  <img width="300" height="300" src="img/logo.png">
 </p>
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+![Contributions welcome](https://img.shields.io/badge/contributions-welcome-orange.svg)
 
 # nvim-peekup
 Finally vim registers made easy and fun! No more headaches with cumbersome keystrokes `"<register>p`, no more forgetting where the yanked text is: peek into the vim registers in floating window and pick up the text you want with `nvim-peekup`!
