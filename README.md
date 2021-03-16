@@ -1,4 +1,21 @@
-# nvim-peekup
+<h1 align="center">
+  <br>
+  <img width="300" height="300" src="img/logo.png">
+  <br>
+  nvim-peekup
+  <br>
+</h1>
+
+<h4 align="center">neovim registers made easy!</h4>
+
+<p align="center">
+  <a href="#Installation">Installation</a> •
+  <a href="#Usage">Usage</a> •
+  <a href="#Features-in-short">Features in short</a> •
+  <a href="#Customisation">Customisation</a> •
+  <a href="#Feedback">Feedback</a>
+</p>
+
 Finally vim registers made easy and fun! No more headaches with cumbersome keystrokes `"<register>p`, no more forgetting where the yanked text is: peek into the vim registers in floating window and pick up the text you want with `nvim-peekup`!
 
 ![](img/screenshot.png)
