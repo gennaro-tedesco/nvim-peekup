@@ -9,11 +9,6 @@
 <h4 align="center">neovim registers made easy!</h4>
 
 <p align="center">
-  <a href="#"><img src="https://img.shields.io/badge/License-MIT-blue.svg"></a>
-  <a href="#"><img src="https://img.shields.io/badge/contributions-welcome-orange.svg"></a>
-</p>
-
-<p align="center">
   <a href="#Installation">Installation</a> •
   <a href="#Usage">Usage</a> •
   <a href="#Features-in-short">Features in short</a> •
