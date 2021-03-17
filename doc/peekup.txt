@@ -1,7 +1,6 @@
 *nvim-peekup*: vim registers made easy
 
 Author  : Gennaro Tedesco <gennarotedesco@gmail.com>
-Version : 0.0.1
 License : MIT license {{{
 
   Copyright (c)
