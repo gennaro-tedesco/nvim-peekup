@@ -6,15 +6,20 @@
   <br>
 </h1>
 
+<h2 align="center">
+  <img alt="PR" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat"/>
+  <img alt="Lua" src="https://img.shields.io/badge/lua-%232C2D72.svg?&style=flat&logo=lua&logoColor=white"/>
+</h2>
+
 <h4 align="center">neovim registers made easy!</h4>
 
-<p align="center">
+<h3 align="center">
   <a href="#Installation">Installation</a> •
   <a href="#Usage">Usage</a> •
   <a href="#Features-in-short">Features in short</a> •
   <a href="#Customisation">Customisation</a> •
   <a href="#Feedback">Feedback</a>
-</p>
+</h3>
 
 Finally vim registers made easy and fun! No more headaches with cumbersome keystrokes `"<register>p`, no more forgetting where the yanked text is: peek into the vim registers in floating window and pick up the text you want with `nvim-peekup`!
 
