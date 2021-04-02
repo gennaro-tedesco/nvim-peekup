@@ -6,7 +6,7 @@ local function centre_string(s)
 end
 
 local function get_reg(char)
-	return vim.fn.getreg(char):gsub("[\n\r]", "^J")
+	return vim.fn.getreg(char):gsub("[\n\r]", "⏎")
 end
 
 local function reg2t(paste_where)
