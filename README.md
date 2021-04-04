@@ -37,7 +37,7 @@ Open the peekup window with the default keymapping `""`. Scroll and browse the l
 
 `<Esc>` to manually close the window otherwise.
 
-![](img/demo.gif)
+![demo](https://user-images.githubusercontent.com/15387611/113494882-03645880-94ed-11eb-90f5-1beeeeeee09a.gif)
 
 Default commands
 
