@@ -30,7 +30,6 @@ Install it using your favourite plugin manager; for instance if you are using vi
 ```
 Plug 'gennaro-tedesco/nvim-peekup'
 ```
-We recommend to use the latest neovim [nightly build](https://github.com/neovim/neovim/releases/tag/nightly), as some lua options may not work otherwise.
 
 ## Usage
 Open the peekup window with the default keymapping `""`. Scroll and browse the list of registers ordered by type and select the register you want by simply pressing the corresponding character (letter or number, no need to prepend `"`): you receive visual confirmation for your choice and the text is copied into the default register. The peekup window automatically closes and you can now easily put (`p`) your yanked text anywhere you want.
