@@ -42,12 +42,12 @@ Default commands
 
 | key             | description
 |:--------------- |:-------------
-|""               | open peekup window
+|`""`             | open peekup window
 |`<Esc>`          | close peekup window
 |any character    | select and copy text from the corresponding " register
 |`<C-j>`, `<C-k>` | scroll the list up and down
 |`<Up>`, `<Down>` | move to next registers type
-|"x               | empty all registers (outside the peekup window)
+|`"x`             | empty all registers (outside the peekup window)
 
 Notice that since characters keystrokes copy the text from the corresponding register, the peekup window does not obey the standard vim motion commands. Arrow keys move among registers sections (they can also use the corresponding marks `'n, 'l, 's`).
 
