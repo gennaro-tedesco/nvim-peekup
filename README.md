@@ -34,7 +34,7 @@ Plug 'gennaro-tedesco/nvim-peekup'
 ## Usage
 Open the peekup window with the default keymapping `""`. Scroll and browse the list of registers ordered by type and select the register you want by simply pressing the corresponding character (letter or number, no need to prepend `"`): you receive visual confirmation for your choice and the text is copied into the default register. The peekup window automatically closes and you can now easily put (`p`) your yanked text anywhere you want.
 
-`<Esc>` to manually close the window otherwise.
+`<Esc>` to manually close the window otherwise (the peekup window closes automatically also when changing windows focus).
 
 ![demo](https://user-images.githubusercontent.com/15387611/113494882-03645880-94ed-11eb-90f5-1beeeeeee09a.gif)
 
@@ -47,6 +47,7 @@ Default commands
 |any character    | select and copy text from the corresponding " register
 |`<C-j>`, `<C-k>` | scroll the list up and down
 |`<Up>`, `<Down>` | move to next registers type
+|"x               | empty all registers
 
 Notice that since characters keystrokes copy the text from the corresponding register, the peekup window does not obey the standard vim motion commands. Arrow keys move among registers sections (they can also use the corresponding marks `'n, 'l, 's`).
 
@@ -67,6 +68,7 @@ Exposed interfaces
 |g:peekup\_open            | `<Plug>PeekupOpen`           | open peekup window and interact
 |g:peekup\_paste\_before   | `<Plug>PeekupPasteBefore`    | directly paste before cursor upon selection
 |g:peekup\_paste\_after    | `<Plug>PeekupPasteAfter`     | directly paste after cursor upon selection
+|g:peekup\_empty\_registers| `<Plug>PeekupEmptyRegisters` | clear all registers
 
 see also `:help peekup-usage`.
 
@@ -74,6 +76,7 @@ see also `:help peekup-usage`.
 - peekup floating window with registers content
 - visual confirmation of selected text
 - peekup closes automatically, put (`p`) the yanked text anywhere
+- keymap to empty all registers
 - fully customisable layout and behaviour
 
 ## Customisation
