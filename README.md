@@ -9,6 +9,9 @@
 <h2 align="center">
   <img alt="PR" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat"/>
   <img alt="Lua" src="https://img.shields.io/badge/lua-%232C2D72.svg?&style=flat&logo=lua&logoColor=white"/>
+  <a href="https://github.com/gennaro-tedesco/nvim-peekup/releases">
+    <img alt="releases" src="https://img.shields.io/github/release/gennaro-tedesco/nvim-peekup"/>
+  </a>
 </h2>
 
 <h4 align="center">neovim registers made easy!</h4>
