@@ -85,8 +85,6 @@ and sorted by character.
     Interface to :call PeekupEmptyRegisters()
 
   Cleal all registers. Default mapping: `"x`
-  It must be invoked outside the peekup window (or the peekup window must be
-  refreshed afterwards to take effect).
   To customise:
 
   `let g:peekup_empty_registers = ...`

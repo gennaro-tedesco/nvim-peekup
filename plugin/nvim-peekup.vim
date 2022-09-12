@@ -29,7 +29,7 @@ else
 	nmap "x <Plug>PeekupEmptyRegisters
 endif
 
-"" define functions
+"" functions
 augroup PeekAutoClose
 	autocmd!
 	autocmd WinLeave * call s:PeekClose()
@@ -47,6 +47,8 @@ function PeekupEmptyRegisters() abort
 	for i in range(34,122)
 		silent! call setreg(nr2char(i), [])
 	endfor
+	call s:PeekClose()
+	lua require('nvim-peekup').peekup_open()
 endfunction
 
 let g:loaded_peekup = 1
