@@ -79,45 +79,6 @@ see also `:help peekup-usage`.
 - keymap to empty all registers
 - fully customisable layout and behaviour
 
-![demo](https://user-images.githubusercontent.com/15387611/113494882-03645880-94ed-11eb-90f5-1beeeeeee09a.gif)
-
-Default commands
-
-| key             | description
-|:--------------- |:-------------
-|""               | open peekup window
-|`<Esc>`          | close peekup window
-|any character    | select and copy text from the corresponding " register
-|`<C-j>`, `<C-k>` | scroll the list up and down
-|`<Up>`, `<Down>` | move to next registers type
-
-Notice that since characters keystrokes copy the text from the corresponding register, the peekup window does not obey the standard vim motion commands. Arrow keys move among registers sections (they can also use the corresponding marks `'n, 'l, 's`).
-
-To change default mapping to open the peekup window simply specify the right hand side of
-```
-let g:peekup_open = '<leader>"'
-```
-If you want to directly paste before or after the current cursor position (without having to issue `p` after the selection) simply specify values for the options
-```
-let g:peekup_paste_before = '<leader>P'
-let g:peekup_paste_after = '<leader>p'
-```
-
-Exposed interfaces
-
-| option                   | method                       | description
-|:------------------------ |:---------------------------- |:----------------
-|g:peekup\_open            | `<Plug>PeekupOpen`           | open peekup window and interact
-|g:peekup\_paste\_before   | `<Plug>PeekupPasteBefore`    | directly paste before cursor upon selection
-|g:peekup\_paste\_after    | `<Plug>PeekupPasteAfter`     | directly paste after cursor upon selection
-
-see also `:help peekup-usage`.
-
-## Features in short
-- peekup floating window with registers content
-- visual confirmation of selected text
-- peekup closes automatically, put (`p`) the yanked text anywhere
-- fully customisable layout and behaviour
 
 ## Customisation
 The look and the behaviour of the registers floating window is fully customisable. In order to do so simply override the [dictionary configuration entries](https://github.com/gennaro-tedesco/nvim-peekup/blob/master/lua/nvim-peekup/config.lua) specifying the below in your nvim configurations (init.vim or any other option file being sourced at start-up), say
