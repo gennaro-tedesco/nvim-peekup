@@ -1,6 +1,7 @@
 PeekupOpen	peekup.txt	/*PeekupOpen*
 PeekupPasteAfter	peekup.txt	/*PeekupPasteAfter*
 PeekupPasteBefore	peekup.txt	/*PeekupPasteBefore*
+PeekupEmptyRegisters	peekup.txt	/*PeekupEmptyRegisters*
 nvim-peekup	peekup.txt	/*nvim-peekup*
 peekup-contents	peekup.txt	/*peekup-contents*
 peekup-customisation	peekup.txt	/*peekup-customisation*
