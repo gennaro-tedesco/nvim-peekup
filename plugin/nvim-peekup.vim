@@ -20,4 +20,17 @@ if exists('g:peekup_paste_before')
 	execute 'nmap' . g:peekup_paste_before .  ' <Plug>PeekupPasteBefore'
 endif
 
+augroup PeekAutoClose
+	autocmd!
+	autocmd WinLeave * call s:PeekClose()
+augroup END
+
+function s:PeekClose() abort
+	for i in range(1, winnr('$'))
+        if getbufvar(winbufnr(i), '&filetype') ==? 'peek'
+			close
+		endif
+    endfor
+endfunction
+
 let g:loaded_peekup = 1
