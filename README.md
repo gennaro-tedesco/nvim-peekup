@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <img width="300" height="300" src="img/logo.png">
+  <img width="300" height="300" src="https://user-images.githubusercontent.com/15387611/189754366-359af924-48c8-4f58-8d21-589d5e5c2276.png">
   <br>
   nvim-peekup
   <br>
@@ -23,7 +23,7 @@
 
 Finally vim registers made easy and fun! No more headaches with cumbersome keystrokes `"<register>p`, no more forgetting where the yanked text is: peek into the vim registers in floating window and pick up the text you want with `nvim-peekup`!
 
-![](img/screenshot.png)
+![](https://user-images.githubusercontent.com/15387611/189754642-323b574f-433f-439a-9bcb-2f20fe0bc0c3.png)
 
 ## Installation
 Install it using your favourite plugin manager; for instance if you are using vim-plug
